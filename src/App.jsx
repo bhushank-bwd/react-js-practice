@@ -3,6 +3,7 @@ import Body from "./components/Body";
 import About from "./components/About";
 import { Error } from "./components/Error";
 import Home from "./components/Home";
+import { useSelector } from "react-redux";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,9 +23,10 @@ function App() {
       ],
     },
   ]);
-
+  const pageLoad = useSelector((store) => store.site.pageLoad);
   return (
     <>
+      <h1>{pageLoad}</h1>
       <RouterProvider router={router}></RouterProvider>
     </>
   );
