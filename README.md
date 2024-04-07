@@ -24,3 +24,4 @@
 
 - `npm i react-redux && @reduxjs/toolkit`
 - create utils/redux-toolkit/store.js
+- create utils\redux-toolkit\slice\site.js
