@@ -25,3 +25,10 @@
 - `npm i react-redux && @reduxjs/toolkit`
 - create utils/redux-toolkit/store.js
 - create utils\redux-toolkit\slice\site.js
+
+## React Query
+
+- Installation
+
+1. `npm i @tanstack/react-query`
+2. Provide the client to your App
