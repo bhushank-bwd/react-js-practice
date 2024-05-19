@@ -4,6 +4,7 @@ import About from "./components/About";
 import { Error } from "./components/Error";
 import Home from "./components/Home";
 import { useSelector } from "react-redux";
+import Todo from "./components/Todo";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,13 +21,15 @@ function App() {
           path: "",
           element: <Home />,
         },
+        {
+          path: "todo",
+          element: <Todo />,
+        },
       ],
     },
   ]);
-  const pageLoad = useSelector((store) => store.site.pageLoad);
   return (
     <>
-      <h1>{pageLoad}</h1>
       <RouterProvider router={router}></RouterProvider>
     </>
   );
