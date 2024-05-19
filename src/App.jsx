@@ -5,6 +5,7 @@ import { Error } from "./components/Error";
 import Home from "./components/Home";
 import { useSelector } from "react-redux";
 import Todo from "./components/Todo";
+import InfiniteScrollList from "./components/load/InfiniteScrollList";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
         {
           path: "todo",
           element: <Todo />,
+        },
+        {
+          path: "load-more",
+          element: <InfiniteScrollList />,
         },
       ],
     },
