@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import { useSelector } from "react-redux";
 import Todo from "./components/Todo";
 import InfiniteScrollList from "./components/load/InfiniteScrollList";
+import { Formik } from "formik";
+import SignUpForm from "./components/formik/SignUpForm";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +31,10 @@ function App() {
         {
           path: "load-more",
           element: <InfiniteScrollList />,
+        },
+        {
+          path: "formik",
+          element: <SignUpForm />,
         },
       ],
     },

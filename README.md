@@ -44,3 +44,8 @@
 ## Multiple environment
 
 1. Create .env.development
+
+## React Formik
+
+1. `npm install formik --save`
+2. `npm install yup`
