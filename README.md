@@ -32,3 +32,11 @@
 
 1. `npm i @tanstack/react-query`
 2. Provide the client to your App
+
+## GH PAGES
+
+1. `npm install --save gh-pages`
+2. Add homepage in package.json https://username.github.io/repo-name
+3. Add following command in package.json
+   ` "predeploy": "npm run build"`
+   ` "deploy": "gh-pages -d dist"` // build for create-react-app
