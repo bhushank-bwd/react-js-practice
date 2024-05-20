@@ -40,3 +40,7 @@
 3. Add following command in package.json
    ` "predeploy": "npm run build"`
    ` "deploy": "gh-pages -d dist"` // build for create-react-app
+
+## Multiple environment
+
+1. Create .env.development
