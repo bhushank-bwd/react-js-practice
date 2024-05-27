@@ -8,6 +8,7 @@ import Todo from "./components/Todo";
 import InfiniteScrollList from "./components/load/InfiniteScrollList";
 import { Formik } from "formik";
 import SignUpForm from "./components/formik/SignUpForm";
+import ComponentBasics2 from "./components/Udemy/ComponentBasics2";
 
 function App() {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ function App() {
         {
           path: "formik",
           element: <SignUpForm />,
+        },
+        {
+          path: "udemy",
+          element: <ComponentBasics2 />,
         },
       ],
     },
