@@ -3,16 +3,20 @@ import GameBoard from "./GameBoard";
 
 const TicTacToe = () => {
   const [gameTurn, setgameTurn] = useState([]);
-  const [activePlayer, setActivePlayer] = useState("X");
-  function handleSelectSqure() {
-    setActivePlayer((oldActivePlayer) => (oldActivePlayer === "X" ? "O" : "X"));
+  function handleSelectSqure(rowIndex, colIndex) {
+    setgameTurn((oldTurn) => {
+      let turnn = "X";
+      if (oldTurn.length > 0 && oldTurn[0]["player"] === "X") {
+        turnn = "O";
+      }
+      const updatedTurn = [
+        { square: { row: rowIndex, col: colIndex }, player: turnn },
+        ...oldTurn,
+      ];
+      return updatedTurn;
+    });
   }
-  return (
-    <GameBoard
-      handleSelectSqure={handleSelectSqure}
-      activePlayer={activePlayer}
-    />
-  );
+  return <GameBoard handleSelectSqure={handleSelectSqure} turns={gameTurn} />;
 };
 
 export default TicTacToe;
