@@ -1,38 +1,17 @@
 import React, { useState } from "react";
-
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+import GameBoard from "./GameBoard";
 
 const TicTacToe = () => {
-  const [gameBoard, setgameBoard] = useState(initialGameBoard);
-  const handleClick = (rowIndex, colIndex) => {
-    setgameBoard((oldArray) => {
-      let tempArr = [...oldArray.map((innerArray) => [...innerArray])];
-      tempArr[rowIndex][colIndex] = "X";
-      return tempArr;
-    });
-  };
+  const [gameTurn, setgameTurn] = useState([]);
+  const [activePlayer, setActivePlayer] = useState("X");
+  function handleSelectSqure() {
+    setActivePlayer((oldActivePlayer) => (oldActivePlayer === "X" ? "O" : "X"));
+  }
   return (
-    <ol>
-      {gameBoard.map((row, rowIndex) => (
-        <li key={rowIndex}>
-          <ol>
-            {row.map((col, colIndex) => (
-              <button
-                onClick={() => handleClick(rowIndex, colIndex)}
-                className="border-2 border-red-800 bg-red-600 w-24 h-24 m-2 rounded-sm text-white text-lg p-2"
-                key={colIndex}
-              >
-                {col}
-              </button>
-            ))}
-          </ol>
-        </li>
-      ))}
-    </ol>
+    <GameBoard
+      handleSelectSqure={handleSelectSqure}
+      activePlayer={activePlayer}
+    />
   );
 };
 
