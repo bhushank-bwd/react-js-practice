@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import GameBoard from "./GameBoard";
 
 const TicTacToe = () => {
+  // learn lift state
+
   const [gameTurn, setgameTurn] = useState([]);
   function handleSelectSqure(rowIndex, colIndex) {
     setgameTurn((oldTurn) => {
