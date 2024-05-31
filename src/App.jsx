@@ -10,6 +10,7 @@ import { Formik } from "formik";
 import SignUpForm from "./components/formik/SignUpForm";
 import ComponentBasics2 from "./components/Udemy/ComponentBasics2";
 import TicTacToe from "./components/Udemy/TicTacToe";
+import Investment from "./components/Udemy/investment/Investment";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,12 +40,21 @@ function App() {
           element: <SignUpForm />,
         },
         {
-          path: "udemy-1",
-          element: <ComponentBasics2 />,
-        },
-        {
-          path: "tic-tac-toe",
-          element: <TicTacToe />,
+          path: "udemy",
+          children: [
+            {
+              path: "",
+              element: <ComponentBasics2 />,
+            },
+            {
+              path: "investment",
+              element: <Investment />,
+            },
+            {
+              path: "tic-tac-toe",
+              element: <TicTacToe />,
+            },
+          ],
         },
       ],
     },
