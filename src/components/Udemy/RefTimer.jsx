@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import RefResultModel from "./RefResultModel";
 
 const RefTimer = () => {
   return (
@@ -29,16 +30,19 @@ export const Watch = ({ title, seconds }) => {
     clearTimeout(refTimer.current);
   };
   return (
-    <div className="bg-amber-100 md:bg-amber-300 p-2 text-center">
-      <h2>{title}</h2>
-      <h2>{timerExpired && "You Lost"}</h2>
-      <button
-        className="bg-green-400 text-white text-lg w-fit rounded-md p-2 m-1"
-        onClick={timerStarted ? stopTimer : startTimer}
-      >
-        {timerStarted ? "Stop timer" : "Start Timer"}
-      </button>
-    </div>
+    <>
+      {timerExpired && <RefResultModel result={`lost`} seconds={seconds} />}
+      <div className="bg-amber-100 md:bg-amber-300 p-2 text-center">
+        <h2>{title}</h2>
+        <h2>{timerExpired && "You Lost"}</h2>
+        <button
+          className="bg-green-400 text-white text-lg w-fit rounded-md p-2 m-1"
+          onClick={timerStarted ? stopTimer : startTimer}
+        >
+          {timerStarted ? "Stop timer" : "Start Timer"}
+        </button>
+      </div>
+    </>
   );
 };
 
