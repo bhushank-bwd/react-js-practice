@@ -11,6 +11,7 @@ import SignUpForm from "./components/formik/SignUpForm";
 import ComponentBasics2 from "./components/Udemy/ComponentBasics2";
 import TicTacToe from "./components/Udemy/TicTacToe";
 import Investment from "./components/Udemy/investment/Investment";
+import RefTimer from "./components/Udemy/RefTimer";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,6 +54,10 @@ function App() {
             {
               path: "tic-tac-toe",
               element: <TicTacToe />,
+            },
+            {
+              path: "ref-timer",
+              element: <RefTimer />,
             },
           ],
         },
