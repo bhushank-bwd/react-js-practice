@@ -24,7 +24,8 @@ export const Watch = ({ title, seconds }) => {
   const startTimer = () => {
     refTimer.current = setTimeout(() => {
       setTimerExpired(true);
-      dialog.current.showModal();
+      //   dialog.current.showModal(); // Uncaught TypeError: dialog.current.showModal is not a function => when useImperativeHandle used
+      dialog.current.open(); // use open from return object of useImperativeHandle
     }, seconds * 1000);
     setTimerStarted(true);
   };

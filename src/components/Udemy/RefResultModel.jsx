@@ -1,9 +1,18 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 
 const ResultModel = forwardRef(function ({ result, seconds }, ref) {
+  let dialogRef = useRef(null); // use own ref
+  useImperativeHandle(ref, () => {
+    // only follow return object properties can acces by ref props of forwardRef
+    return {
+      open() {
+        dialogRef.current.showModal();
+      },
+    };
+  });
   return (
     <dialog
-      ref={ref}
+      ref={dialogRef}
       className="w-1/4 h-fit text-center bg-gray-300 p-2 rounded-md"
     >
       <form method="dialog">
