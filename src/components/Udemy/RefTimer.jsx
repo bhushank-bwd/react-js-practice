@@ -17,34 +17,46 @@ const RefTimer = () => {
 };
 // const refTimer;//if we used this then all instance of watch will use same variable
 export const Watch = ({ title, seconds }) => {
-  const [timerStarted, setTimerStarted] = useState(false);
-  const [timerExpired, setTimerExpired] = useState(false);
   let refTimer = useRef(null); // so we used ref in Watch
   let dialog = useRef(null); // so we used ref in Watch
+
+  const [timeRemaining, setTimeRemaining] = useState(seconds * 1000);
+  const isTimerActive = timeRemaining > 0 && timeRemaining < seconds * 1000;
+
+  if (timeRemaining <= 0) {
+    clearInterval(refTimer.current);
+    dialog.current.open();
+  }
+  const onReset = () => {
+    setTimeRemaining(seconds * 1000);
+  };
+
   const startTimer = () => {
-    refTimer.current = setTimeout(() => {
-      setTimerExpired(true);
-      //   dialog.current.showModal(); // Uncaught TypeError: dialog.current.showModal is not a function => when useImperativeHandle used
-      dialog.current.open(); // use open from return object of useImperativeHandle
-    }, seconds * 1000);
-    setTimerStarted(true);
+    refTimer.current = setInterval(() => {
+      setTimeRemaining((prevTimeRemaining) => prevTimeRemaining - 10);
+    }, 10);
   };
   const stopTimer = () => {
-    clearTimeout(refTimer.current);
+    clearInterval(refTimer.current);
+    dialog.current.open();
   };
   return (
     <>
       <div className="bg-amber-100 md:bg-amber-300 p-2 text-center">
         <h2>{title}</h2>
-        <h2>{timerExpired && "You Lost"}</h2>
         <button
           className="bg-green-400 text-white text-lg w-fit rounded-md p-2 m-1"
-          onClick={timerStarted ? stopTimer : startTimer}
+          onClick={isTimerActive ? stopTimer : startTimer}
         >
-          {timerStarted ? "Stop timer" : "Start Timer"}
+          {isTimerActive ? "Stop timer" : "Start Timer"}
         </button>
       </div>
-      <ResultModel ref={dialog} seconds={seconds} result="lost" />
+      <ResultModel
+        ref={dialog}
+        seconds={seconds}
+        timeRemaining={timeRemaining}
+        onReset={onReset}
+      />
     </>
   );
 };
