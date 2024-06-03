@@ -1,8 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-const RefResultModel = ({ result, seconds }) => {
+const ResultModel = forwardRef(function ({ result, seconds }, ref) {
   return (
-    <dialog className="w-1/4 h-fit text-center bg-gray-300 p-2 rounded-md" open>
+    <dialog
+      ref={ref}
+      className="w-1/4 h-fit text-center bg-gray-300 p-2 rounded-md"
+    >
       <form method="dialog">
         <h2>
           You {result}, {seconds} seconds stop Challenge{" "}
@@ -13,6 +16,6 @@ const RefResultModel = ({ result, seconds }) => {
       </form>
     </dialog>
   );
-};
+});
 
-export default RefResultModel;
+export default ResultModel;

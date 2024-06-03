@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import RefResultModel from "./RefResultModel";
+import ResultModel from "./RefResultModel";
 
 const RefTimer = () => {
   return (
@@ -19,10 +20,11 @@ export const Watch = ({ title, seconds }) => {
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerExpired, setTimerExpired] = useState(false);
   let refTimer = useRef(null); // so we used ref in Watch
+  let dialog = useRef(null); // so we used ref in Watch
   const startTimer = () => {
     refTimer.current = setTimeout(() => {
       setTimerExpired(true);
-      console.log("seconds", seconds);
+      dialog.current.showModal();
     }, seconds * 1000);
     setTimerStarted(true);
   };
@@ -31,7 +33,6 @@ export const Watch = ({ title, seconds }) => {
   };
   return (
     <>
-      {timerExpired && <RefResultModel result={`lost`} seconds={seconds} />}
       <div className="bg-amber-100 md:bg-amber-300 p-2 text-center">
         <h2>{title}</h2>
         <h2>{timerExpired && "You Lost"}</h2>
@@ -42,6 +43,7 @@ export const Watch = ({ title, seconds }) => {
           {timerStarted ? "Stop timer" : "Start Timer"}
         </button>
       </div>
+      <ResultModel ref={dialog} seconds={seconds} result="lost" />
     </>
   );
 };
