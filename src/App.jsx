@@ -12,6 +12,7 @@ import ComponentBasics2 from "./components/Udemy/ComponentBasics2";
 import TicTacToe from "./components/Udemy/TicTacToe";
 import Investment from "./components/Udemy/investment/Investment";
 import RefTimer from "./components/Udemy/RefTimer";
+import ProjectHome from "./components/Udemy/project/ProjectHome";
 
 function App() {
   const router = createBrowserRouter([
@@ -58,6 +59,10 @@ function App() {
             {
               path: "ref-timer",
               element: <RefTimer />,
+            },
+            {
+              path: "project",
+              element: <ProjectHome />,
             },
           ],
         },
