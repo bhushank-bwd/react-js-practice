@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectSideBar = ({ projectList, addProject }) => {
+const ProjectSideBar = ({ projectList, addProject, selectProject }) => {
   return (
     <div className="w-1/4 text-white bg-black p-2 h-full">
       <aside>
@@ -15,8 +15,11 @@ const ProjectSideBar = ({ projectList, addProject }) => {
         </div>
         <menu>
           {projectList?.map((project) => {
-            console.log(project.title, project);
-            return <li key={project.id}>{project.title}</li>;
+            return (
+              <li onClick={() => selectProject(project.id)} key={project.id}>
+                {project.title}
+              </li>
+            );
           })}
         </menu>
       </aside>
